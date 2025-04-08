@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+    include 'Scripts/dbconnect.php';
+    $db = new Database(); 
+    $conn = $db->conn; 
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +83,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger signUpButton">SIGN UP</button>
-                <p class="loginLink">Already have an account? <a href="../TutorLinkUp/login_page.html">Login</a></p>
+                <p class="loginLink">Already have an account? <a href="../Peer2peer/login_page.html">Login</a></p>
             </form>
 
         </div>

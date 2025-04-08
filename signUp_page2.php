@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<php
-
+<?php
+    include 'Scripts/dbconnect.php';
+    $db = new Database(); 
+    $conn = $db->conn; 
 ?>
-</php>
 
 <head>
     <meta charset="UTF-8">
@@ -82,7 +83,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger signUpButton">SIGN UP</button>
-                <p class="loginLink">Already have an account? <a href="../TutorLinkUp/login_page.html">Login</a></p>
+                <p class="loginLink">Already have an account? <a href="../Peer2peer/login_page.html">Login</a></p>
             </form>
 
         </div>
