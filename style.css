@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-image: url("img/bg1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.overlay {
+   background-color: rgba(0, 0, 0, 0.5); 
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   z-index: 1;
+}
+
+.loginForm {
+    background-color: white;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 2;
+}
+
+.loginForm h1{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #747474;
+}
+
+.loginForm input[type="text"]{
+    margin-bottom: 15px;
+}
+
+.forgotPass{
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+}
+
+.loginForm .loginButton {
+    width: 100%;
+    max-width: 100px;
+    padding: 10px;
+    background-color: #D6000B;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 15px auto;
+    border-radius: 5px;
+    display: block;
+}
+
+.loginForm .loginButton:hover {
+    background-color: #AF0009;
+}
+
+.signUpLink{
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+}
+
+/*SignUp Style*/
+.chooseUser {
+    background-color: white;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.chooseUser h1 {
+    font-size: 25px;
+    font-weight: 500px;
+    margin-bottom: 20px;
+}
+
+.tutorButton,
+.studentButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #D6000B;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.tutorButton:hover ,
+.studentButton:hover {
+    background-color: #AF0009;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.loginLink {
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+}
+
+/*for tutor*/
+.signUpForm1 {
+    background-color: white;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 2;
+}
+
+.signUpForm1 h1 {
+    font-size: 25px;
+    font-weight: 500px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.row{
+    margin-bottom: 15px;
+}
+
+.tnc {
+    font-size: 12px;
+}
+
+.signUpForm1 .signUpButton {
+    width: 100%;
+    max-width: 100px;
+    padding: 10px;
+    background-color: #D6000B;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 15px auto;
+    border-radius: 5px;
+    display: block;
+}
+
+.signUpForm1 .signUpButton:hover {
+    background-color: #AF0009;
+}
+
+
+/*for students*/
+.signUpForm2 {
+    background-color: white;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 2;
+}
+
+.signUpForm2 h1 {
+    font-size: 25px;
+    font-weight: 500px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.row{
+    margin-bottom: 15px;
+}
+
+.tnc {
+    font-size: 12px;
+}
+
+.signUpForm2 .signUpButton {
+    width: 100%;
+    max-width: 100px;
+    padding: 10px;
+    background-color: #D6000B;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 15px auto;
+    border-radius: 5px;
+    display: block;
+}
+
+.signUpForm2 .signUpButton:hover {
+    background-color: #AF0009;
+}
+
+
