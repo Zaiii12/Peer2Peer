@@ -18,7 +18,7 @@
                 <div class="col-12 col-sm-5 d-grid">
                     <a href="../TutorLinkUp/signUp_page2.html" class="btn btn-danger studentButton">Student</a>
             </div>
-            <p class="loginLink">Already have an account? <a href="../TutorLinkUp/login_page.html">Login</a></p>
+            <p class="loginLink">Already have an account? <a href="../Peer2Peer/login_page.php">Login</a></p>
          </div>
     </div>
 

@@ -17,7 +17,7 @@
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
                 <a href="#" class="forgotPass">Forgot Password?</a>
                 <button type="submit" class="btn btn-danger loginButton">LOGIN</button>
-                <p class="signUpLink">Don't have an account? <a href="../TutorLinkUp/chooseUser.html">Sign Up</a></p>
+                <p class="signUpLink">Don't have an account? <a href="../Peer2Peer/chooseUser.php">Sign Up</a></p>
             </form>
         </div>
     </div>
