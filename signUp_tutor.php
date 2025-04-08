@@ -5,6 +5,7 @@
     include 'Scripts/dbconnect.php';
     $db = new Database(); 
     $conn = $db->conn; 
+    include 'Scripts/signtutor.php'
 ?>
 
 <head>
@@ -19,11 +20,11 @@
     <div class="overlay">
         <div class="signUpForm1">
             <h1>SIGN UP</h1>
-            <form action="" method="POST">
+            <form action="signtutor.php" method="POST">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-6">
                         <label for="formFile" class="form-label">Upload photo</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="formFile" name ="photo">
                     </div>
                     <div class="col-md-6">
                         <label for="formFile" class="form-label">Upload your credentials <span class="text-danger">*</span></label>

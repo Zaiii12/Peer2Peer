@@ -3,6 +3,7 @@
 
 <?php
     include 'Scripts/dbconnect.php';
+    include 'Scripts';
     $db = new Database(); 
     $conn = $db->conn; 
 ?>
@@ -19,34 +20,34 @@
     <div class="overlay">
         <div class="signUpForm2">
             <h1>SIGN UP</h1>
-            <form action="" method="POST">
+            <form action="signstudent.php" method="POST" enctype="multipart/form-data">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-6">
-                        <label for="formFile" class="form-label">Upload photo</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <label for="photo" class="form-label">Upload photo</label>
+                        <input class="form-control" type="file" id="photo" name="photo">
                     </div>
                     <div class="col-md-6">
-                        <label for="sr-code" class="form-label">SR-CODE <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="sr-code" placeholder="00-00000">
+                        <label for="sr_code" class="form-label">SR-CODE <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="sr_code" name="sr_code" placeholder="00-00000" required>
                     </div>
                 </div>
 
                 <div class="row g-3 align-items-center">
                     <div class="col-md-6">
-                        <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="firstName" placeholder="First name">
+                        <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="first_name" name="first_name" placeholder="First name" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="lastName" placeholder="Last name">
+                        <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Last name" required>
                     </div>
                 </div>
 
                 <div class="row g-3 align-items-center">
                     <div class="col-md-6">
                         <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
-                        <select class="form-select">
-                            <option selected>Select</option>
+                        <select class="form-select" id="gender" name="gender" required>
+                            <option value="" disabled selected>Select</option>
                             <option value="Female">Female</option>
                             <option value="Male">Male</option>
                             <option value="Prefer not to say">Prefer not to say</option>
@@ -54,41 +55,40 @@
                     </div>
                     <div class="col-md-6">
                         <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="username" placeholder="Username">
-                    </div>
-                </div>
-                
-                <div class="row g-3 align-items-center">
-                    <div class="col-md-6">
-                        <label for="emailAddress" class="form-label">Email Address <span class="text-danger">*</span></label>
-                        <input class="form-control" type="email" id="emailAddress" placeholder="Email Address">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                        <input class="form-control" type="password" id="password" placeholder="Password">
+                        <input class="form-control" type="text" id="username" name="username" placeholder="Username" required>
                     </div>
                 </div>
 
                 <div class="row g-3 align-items-center">
                     <div class="col-md-6">
-                        <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                        <label for="email_address" class="form-label">Email Address <span class="text-danger">*</span></label>
+                        <input class="form-control" type="email" id="email_address" name="email_address" placeholder="Email Address" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="pass" class="form-label">Password <span class="text-danger">*</span></label>
+                        <input class="form-control" type="password" id="pass" name="pass" placeholder="Password" required>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-6">
+                        <input class="form-check-input" type="checkbox" value="" id="checkDefault" required>
                         <label class="form-check-label tnc" for="checkDefault">
                             I agree to the 
                             <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">
                               Terms and Conditions <span class="text-danger">*</span>
                             </a>
                         </label>
-
-                        
                     </div>
                 </div>
+
                 <button type="submit" class="btn btn-danger signUpButton">SIGN UP</button>
                 <p class="loginLink">Already have an account? <a href="../Peer2peer/login_page.html">Login</a></p>
             </form>
-
         </div>
     </div>
-    
+</body>
+
 
     
     <!-- Terms and Conditions Modal -->
