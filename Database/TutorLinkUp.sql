@@ -1,6 +1,8 @@
-create database tutorLinkUp_db;
 
--- Create Users table
+CREATE DATABASE tutorLinkUp_db;
+USE tutorLinkUp_db;
+
+-- Users table
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -9,7 +11,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create Students table
+-- Students table
 CREATE TABLE students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL UNIQUE,
@@ -18,13 +20,13 @@ CREATE TABLE students (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     gender ENUM('Male', 'Female', 'Prefer not to say') NOT NULL,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email_address VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    email_address VARCHAR(255) NOT NULL,
     pass VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
--- Create Tutors table
+-- Tutors table
 CREATE TABLE tutors (
     tutor_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL UNIQUE,
@@ -33,21 +35,21 @@ CREATE TABLE tutors (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     gender ENUM('Male', 'Female', 'Prefer not to say') NOT NULL,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email_address VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    email_address VARCHAR(255) NOT NULL,
     pass VARCHAR(50) NOT NULL,
     is_verified BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
--- Create Admin table
+-- Admin table
 CREATE TABLE admin (
     admin_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL
 );
 
--- Create Tutor Verification table (admin verifies tutors)
+-- Tutor Verification table
 CREATE TABLE tutor_verification (
     verification_id INT AUTO_INCREMENT PRIMARY KEY,
     tutor_id INT NOT NULL,
@@ -57,7 +59,7 @@ CREATE TABLE tutor_verification (
     FOREIGN KEY (admin_id) REFERENCES admin(admin_id)
 );
 
--- Create Subjects table
+-- Subjects table
 CREATE TABLE subjects (
     subject_id INT AUTO_INCREMENT PRIMARY KEY,
     subject_name VARCHAR(255) UNIQUE NOT NULL
