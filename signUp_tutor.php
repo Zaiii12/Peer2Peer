@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-6">
             <label for="credentials" class="form-label">Upload your credentials <span class="text-danger">*</span></label>
-            <input class="form-control" type="file" id="credentials" name="credentials">
+            <input class="form-control" type="file" id="credentials" name="photo_credentials">
         </div>
     </div>
 
