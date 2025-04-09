@@ -5,7 +5,7 @@
     include 'Scripts/dbconnect.php';
     $db = new Database(); 
     $conn = $db->conn; 
-    include 'Scripts/signtutor.php'
+
 ?>
 
 <head>
@@ -20,72 +20,72 @@
     <div class="overlay">
         <div class="signUpForm1">
             <h1>SIGN UP</h1>
-            <form action="signtutor.php" method="POST">
-                <div class="row g-3 align-items-center">
-                    <div class="col-md-6">
-                        <label for="formFile" class="form-label">Upload photo</label>
-                        <input class="form-control" type="file" id="formFile" name ="photo">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="formFile" class="form-label">Upload your credentials <span class="text-danger">*</span></label>
-                        <input class="form-control" type="file" id="formFile">
-                    </div>
-                </div>
+            <form action="signtutor.php" method="POST" enctype="multipart/form-data">
+    <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+            <label for="photo" class="form-label">Upload photo</label>
+            <input class="form-control" type="file" id="photo" name="photo">
+        </div>
+        <div class="col-md-6">
+            <label for="credentials" class="form-label">Upload your credentials <span class="text-danger">*</span></label>
+            <input class="form-control" type="file" id="credentials" name="credentials">
+        </div>
+    </div>
 
-                <div class="row g-3 align-items-center">
-                    <div class="col-md-6">
-                        <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="firstName" placeholder="First name">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="lastName" placeholder="Last name">
-                    </div>
-                </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" id="firstName" name="first_name" placeholder="First name">
+        </div>
+        <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" id="lastName" name="last_name" placeholder="Last name">
+        </div>
+    </div>
 
-                <div class="row g-3 align-items-center">
-                    <div class="col-md-6">
-                        <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
-                        <select class="form-select">
-                            <option selected>Select</option>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                            <option value="Prefer not to say">Prefer not to say</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="username" placeholder="Username">
-                    </div>
-                </div>
-                
-                <div class="row g-3 align-items-center">
-                    <div class="col-md-6">
-                        <label for="emailAddress" class="form-label">Email Address <span class="text-danger">*</span></label>
-                        <input class="form-control" type="email" id="emailAddress" placeholder="Email Address">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                        <input class="form-control" type="password" id="password" placeholder="Password">
-                    </div>
-                </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+            <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+            <select class="form-select" id="gender" name="gender">
+                <option value="" disabled selected>Select</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+        </div>
+    </div>
+    
+    <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+            <label for="emailAddress" class="form-label">Email Address <span class="text-danger">*</span></label>
+            <input class="form-control" type="email" id="emailAddress" name="email_address" placeholder="Email Address">
+        </div>
+        <div class="col-md-6">
+            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+            <input class="form-control" type="password" id="password" name="pass" placeholder="Password">
+        </div>
+    </div>
 
-                <div class="row g-3 align-items-center">
-                    <div class="col-md-6">
-                        <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                        <label class="form-check-label tnc" for="checkDefault">
-                            I agree to the 
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">
-                              Terms and Conditions <span class="text-danger">*</span>
-                            </a>
-                        </label>
+    <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+            <input class="form-check-input" type="checkbox" value="1" id="checkDefault" name="agree">
+            <label class="form-check-label tnc" for="checkDefault">
+                I agree to the 
+                <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">
+                  Terms and Conditions <span class="text-danger">*</span>
+                </a>
+            </label>
+        </div>
+    </div>
 
-                        
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-danger signUpButton">SIGN UP</button>
-                <p class="loginLink">Already have an account? <a href="../Peer2peer/login_page.html">Login</a></p>
-            </form>
+    <button type="submit" class="btn btn-danger signUpButton">SIGN UP</button>
+    <p class="loginLink">Already have an account? <a href="../Peer2peer/login_page.html">Login</a></p>
+</form>
+
 
         </div>
     </div>

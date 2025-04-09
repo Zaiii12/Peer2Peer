@@ -3,7 +3,6 @@
 
 <?php
     include 'Scripts/dbconnect.php';
-    include 'Scripts';
     $db = new Database(); 
     $conn = $db->conn; 
 ?>
