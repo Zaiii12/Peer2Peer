@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "date": "04-13-2025",
+        "sr_code": "00-12345",
+        "name": "Ace",
+        "gender": "Male",
+        "email": "ace@gmail.com"
+    }
+]
