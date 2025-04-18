@@ -23,7 +23,7 @@
                 <div class="row g-3 align-items-center">
                     <div class="col-md-6">
                         <label for="photo" class="form-label">Upload photo</label>
-                        <input class="form-control" type="file" id="photo" name="photo">
+                        <input class="form-control" type="file" id="sphoto" name="sphoto">
                     </div>
                     <div class="col-md-6">
                         <label for="sr_code" class="form-label">SR-CODE <span class="text-danger">*</span></label>

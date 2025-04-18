@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2025 at 03:38 AM
+-- Generation Time: Apr 18, 2025 at 05:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -25,29 +25,59 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_student` (IN `photo` VARCHAR(255), IN `sr_code` VARCHAR(255), IN `first_name` VARCHAR(255), IN `last_name` VARCHAR(255), IN `gender` VARCHAR(50), IN `username` VARCHAR(50), IN `email_address` VARCHAR(100), IN `pass` VARCHAR(255), IN `user_id` INT)   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_student` (IN `user_id` INT, IN `sphoto` VARCHAR(255), IN `sr_code` VARCHAR(50), IN `first_name` VARCHAR(50), IN `last_name` VARCHAR(50), IN `gender` ENUM('Male','Female','Prefer not to say'), IN `username` VARCHAR(50), IN `email_address` VARCHAR(255), IN `pass` VARCHAR(50))   BEGIN
+    INSERT INTO students (
+        user_id,
+        sphoto,
+        sr_code,
+        first_name,
+        last_name,
+        gender,
+        username,
+        email_address,
+        pass
+    )
+    VALUES (
+        user_id,
+        sphoto,
+        sr_code,
+        first_name,
+        last_name,
+        gender,
+        username,
+        email_address,
+        pass
+    );
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_tutor` (IN `input_first_name` VARCHAR(255), IN `input_last_name` VARCHAR(255), IN `input_gender` VARCHAR(10), IN `input_username` VARCHAR(255), IN `input_email_address` VARCHAR(255), IN `input_pass` VARCHAR(255), IN `input_photo` VARCHAR(255), IN `input_photo_credentials` VARCHAR(255), OUT `result_message` VARCHAR(255))   BEGIN
-    DECLARE username_exists INT DEFAULT 0;
-    DECLARE user_id INT;
-    
-    SELECT COUNT(*) INTO username_exists FROM users WHERE username = input_username;
-    
-    IF username_exists > 0 THEN
-        SET result_message = 'Username already exists. Please choose a different username.';
-    ELSE
-        SET @hashedPassword = PASSWORD(input_pass);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_tutor` (IN `user_id` INT, IN `first_name` VARCHAR(50), IN `last_name` VARCHAR(50), IN `gender` ENUM('Male','Female','Prefer not to say'), IN `username` VARCHAR(50), IN `email_address` VARCHAR(255), IN `pass` VARCHAR(50), IN `tphoto` VARCHAR(255), IN `photo_credentials` VARCHAR(255))   BEGIN
+    INSERT INTO tutors (
+        user_id,
+        first_name,
+        last_name,
+        gender,
+        username,
+        email_address,
+        pass,
+        tphoto,
+        cphoto
+    )
+    VALUES (
+        user_id,
+        first_name,
+        last_name,
+        gender,
+        username,
+        email_address,
+        pass,
+        tphoto,
+        cphoto
+    );
+END$$
 
-        INSERT INTO users (username, pass) VALUES (input_username, @hashedPassword);
-        SET user_id = LAST_INSERT_ID();
-
-        INSERT INTO tutors (photo, photo_credentials, first_name, last_name, gender, username, email_address, pass, user_id, is_verified)
-        VALUES (input_photo, input_photo_credentials, input_first_name, input_last_name, input_gender, input_username, input_email_address, @hashedPassword, user_id, 0);
-
-        SET result_message = 'Tutor has been signed up and is pending approval!';
-    END IF;
-    
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_user` (IN `username` VARCHAR(50), IN `pass` VARCHAR(50))   BEGIN
+    INSERT INTO users (username, pass)
+    VALUES (username, pass);
 END$$
 
 DELIMITER ;
@@ -73,22 +103,16 @@ CREATE TABLE `admin` (
 CREATE TABLE `students` (
   `student_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
+  `sphoto` varchar(255) DEFAULT NULL,
   `sr_code` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `gender` enum('Male','Female','Prefer not to say') NOT NULL,
   `username` varchar(50) NOT NULL,
   `email_address` varchar(255) NOT NULL,
-  `pass` varchar(50) NOT NULL
+  `pass` varchar(50) NOT NULL,
+  `is_verified` varchar(50) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`student_id`, `user_id`, `photo`, `sr_code`, `first_name`, `last_name`, `gender`, `username`, `email_address`, `pass`) VALUES
-(4, 20, 'uploads/test.png', '23-39476', 'Jan Nole', 'Matres', 'Male', 'test1', 'test@gmail.com', '$2y$10$tOFYdfD22trU2UXvqJkmHe2CozxZM4rpYDV0ow6AaBH');
 
 -- --------------------------------------------------------
 
@@ -132,24 +156,16 @@ CREATE TABLE `subjects` (
 CREATE TABLE `tutors` (
   `tutor_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `photo_credentials` varchar(255) NOT NULL,
+  `tphoto` varchar(255) DEFAULT NULL,
+  `cphoto` varchar(255) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `gender` enum('Male','Female','Prefer not to say') NOT NULL,
   `username` varchar(50) NOT NULL,
   `email_address` varchar(255) NOT NULL,
   `pass` varchar(50) NOT NULL,
-  `is_verified` tinyint(1) DEFAULT 0
+  `is_verified` varchar(50) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tutors`
---
-
-INSERT INTO `tutors` (`tutor_id`, `user_id`, `photo`, `photo_credentials`, `first_name`, `last_name`, `gender`, `username`, `email_address`, `pass`, `is_verified`) VALUES
-(4, 21, 'Tphoto/test.png', 'Credentials/test.png', 'Jan Nole', 'Matres', 'Male', 'test5', 'test@gmail.com', '*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29', 0),
-(5, 22, 'Tphoto/test.png', 'Credentials/test.png', 'Jan Nole', 'Matres', 'Male', 'test78', 'test@gmail.com', '*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29', 0);
 
 -- --------------------------------------------------------
 
@@ -175,17 +191,6 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `pass` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `username`, `pass`) VALUES
-(20, 'test1', '$2y$10$tOFYdfD22trU2UXvqJkmHe2CozxZM4rpYDV0ow6AaBHEDl9MigoO2'),
-(21, 'test5', '*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29'),
-(22, 'test78', '*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29'),
-(23, '321', '$2y$10$xyOcJ5FNVbgU/hK.0y1eC.56K0lyIeLfa06GRJDOIzzBHVRRRuxsq'),
-(24, '4321', '$2y$10$Ghwtfurap3Ebs9jyPA2ZkOSoKuwsTImNwS34yVmZ4srf2ZL2RvxCa');
 
 --
 -- Indexes for dumped tables
@@ -262,7 +267,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -274,7 +279,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `tutors`
 --
 ALTER TABLE `tutors`
-  MODIFY `tutor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `tutor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tutor_verification`
@@ -286,7 +291,7 @@ ALTER TABLE `tutor_verification`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Constraints for dumped tables

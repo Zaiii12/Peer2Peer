@@ -24,11 +24,11 @@
     <div class="row g-3 align-items-center">
         <div class="col-md-6">
             <label for="photo" class="form-label">Upload photo</label>
-            <input class="form-control" type="file" id="photo" name="photo">
+            <input class="form-control" type="file" id="tphoto" name="tphoto">
         </div>
         <div class="col-md-6">
             <label for="credentials" class="form-label">Upload your credentials <span class="text-danger">*</span></label>
-            <input class="form-control" type="file" id="credentials" name="photo_credentials">
+            <input class="form-control" type="file" id="cphoto" name="cphoto">
         </div>
     </div>
 
