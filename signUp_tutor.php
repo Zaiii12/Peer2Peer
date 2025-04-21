@@ -5,7 +5,6 @@
     include 'Scripts/dbconnect.php';
     $db = new Database(); 
     $conn = $db->conn; 
-
 ?>
 
 <head>

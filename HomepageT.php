@@ -4,9 +4,10 @@
 
   <?php
   include 'Scripts/functions.php';
-  
-
+  $process = new processes($conn);
+  $process->checklogin();
   ?>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TutorLinkUp | Home</title>
@@ -438,11 +439,11 @@ html, body {
     
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="#HomepageT.php">HOME</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">ABOUT US</a></li>
         <li class="nav-item"><a class="nav-link" href="#subjects">SUBJECTS</a></li>
         <li class="nav-item"><a class="nav-link" href="developers.php">DEVELOPERS</a></li>
-        <li class="nav-item"><a class="nav-link" href="login_page.php">LOGIN</a></li>
+        <li class="nav-item"><a class="nav-link" href="logout.php">LOG OUT</a></li>
       </ul>
     </div>
   </div>
@@ -458,7 +459,7 @@ html, body {
       <div class="col-md-10">
         <h1 class="home-title">Link Up, Level Up!</h1>
         <p class="home-subtitle">Find your tutor, fuel your future.</p>
-        <a href="login_page.php" class="btn btn-red">Get Started</a>
+        <a href="tutor_dashboard.php" class="btn btn-red">Get Started</a>
       </div>
     </div>
   </div>
@@ -609,4 +610,3 @@ html, body {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sphoto = $process->upload_sphoto("sphoto", $username);
     $process->create_student($sphoto, $sr_code, $first_name, $last_name, $gender, $username, $email_address, $pass);
 
-    echo "Success.";
+    echo $hashed;
     exit;
 }
 ?>

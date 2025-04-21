@@ -63,7 +63,7 @@
         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a></li>
       </ul>
     </div>
-    <button class="logout-btn" onclick="window.location.href='login_page.php'">LOGOUT</button>
+    <button class="logout-btn" onclick="window.location.href='logout.php'">LOGOUT</button>
   </div>
 
   <!-- Edit Profile Modal -->

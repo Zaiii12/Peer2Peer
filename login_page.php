@@ -19,10 +19,9 @@
     <div class="overlay">
         <div class="loginForm"> 
             <h1>LOGIN</h1>
-            <form action="" method="POST">
+            <form action="login.php" method="POST">
                 <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-                <a href="#" class="forgotPass">Forgot Password?</a>
+                <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
                 <button type="submit" class="btn btn-danger loginButton">LOGIN</button>
                 <p class="signUpLink">Don't have an account? <a href="../Peer2Peer/chooseUser.php">Sign Up</a></p>
             </form>
