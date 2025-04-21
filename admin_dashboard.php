@@ -49,7 +49,7 @@
   <div class="container mt-5">
     <div class="row g-4">
       <div class="col-12 col-sm-6 col-md-3">
-        <a href="../frontend/request_student.php" class="text-decoration-none text-dark">
+        <a href="../peer2peer/request_student.php" class="text-decoration-none text-dark">
           <div class="card-box">
             <h2>0</h2>
             <p class="mb-0">Sign Up Request - Student</p>
@@ -57,7 +57,7 @@
         </a>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
-        <a href="../frontend/request_tutor.php" class="text-decoration-none text-dark">
+        <a href="../peer2peer/request_tutor.php" class="text-decoration-none text-dark">
           <div class="card-box">
             <h2>0</h2>
             <p class="mb-0">Sign Up Request - Tutor</p>

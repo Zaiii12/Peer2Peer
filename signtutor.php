@@ -1,6 +1,5 @@
 <?php
 include 'Scripts/functions.php';
-
 $db = new Database();
 $conn = $db->conn;
 

@@ -82,7 +82,7 @@ class processes {
         public function upload_sphoto($input_name,$username) {
             $photo_name = $username . '_' . basename($_FILES[$input_name]['name']);
             $tmp_name = $_FILES[$input_name]['tmp_name'];
-            $destination =  'Sphoto/' . $photo_name;
+            $destination =  'img/Sphoto/' . $photo_name;
 
             if (move_uploaded_file($tmp_name,$destination)) {
                 return $destination;
@@ -95,7 +95,7 @@ class processes {
         public function upload_tphoto($tphoto, $username){
             $photo_name = $username . '_' . basename($_FILES[$tphoto]['name']);
             $tmp_name = $_FILES[$tphoto]['tmp_name'];
-            $destination = 'Tphoto/' . $photo_name;
+            $destination = 'img/Tphoto/' . $photo_name;
 
             if(move_uploaded_file($tmp_name, $destination)) {
                 return $destination; 
@@ -108,7 +108,7 @@ class processes {
         public function upload_cphoto($cphoto, $username) {
             $photo_name = $username . '_' . basename($_FILES[$cphoto]['name']);
             $tmp_name = $_FILES[$cphoto]['tmp_name'];
-            $destination = 'Cphoto/' . $photo_name;
+            $destination = 'img/Cphoto/' . $photo_name;
 
             if (move_uploaded_file($tmp_name, $destination)) {
                 return $destination;

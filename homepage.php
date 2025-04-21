@@ -445,14 +445,14 @@ html, body {
 
     <!-- Home Section -->
     <section class="home-section d-flex align-items-center justify-content-center text-center" id="home">
-  <img src="../frontend/img/Home.png" alt="Online Education Banner" class="home-image">
+  <img src="../peer2peer/img/Home.png" alt="Online Education Banner" class="home-image">
   <div class="home-overlay"></div>
   <div class="home-text-container container">
     <div class="row justify-content-center">
       <div class="col-md-10">
         <h1 class="home-title">Link Up, Level Up!</h1>
         <p class="home-subtitle">Find your tutor, fuel your future.</p>
-        <a href="#" class="btn btn-red">Find your tutor</a>
+        <a href="" class="btn btn-red">Get Started</a>
       </div>
     </div>
   </div>
@@ -480,7 +480,8 @@ html, body {
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <div class="subject-card">
               <div class="subject-icon">
-                <img src="../frontend/img/s1.png" alt="Computer Icon" class="icon-image">
+                <img src="../peer2peer
+                /img/s1.png" alt="Computer Icon" class="icon-image">
               </div>
               <h5>INTRODUCTION TO COMPUTING</h5>
               <p>Basic computer concepts, including hardware, software, and solving simple problems.</p>
@@ -489,7 +490,8 @@ html, body {
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <div class="subject-card">
               <div class="subject-icon">
-                <img src="../frontend/img/s2.png" alt="Programming Icon" class="icon-image">
+                <img src="../peer2peer
+                /img/s2.png" alt="Programming Icon" class="icon-image">
               </div>
               <h5>COMPUTER PROGRAMMING</h5>
               <p>Creating instructions that a computer can execute using languages like Python, Java, C++.</p>
@@ -498,7 +500,8 @@ html, body {
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <div class="subject-card">
               <div class="subject-icon">
-                <img src="../frontend/img/s3.png" alt="Data Structures Icon" class="icon-image">
+                <img src="../peer2peer
+                /img/s3.png" alt="Data Structures Icon" class="icon-image">
               </div>
               <h5>DATA STRUCTURES AND ALGORITHMS</h5>
               <p>Organizing and solving complex problems efficiently in computing.</p>
@@ -507,7 +510,8 @@ html, body {
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <div class="subject-card">
               <div class="subject-icon">
-                <img src="../frontend/img/s4.png" alt="Advanced Programming Icon" class="icon-image">
+                <img src="../peer2peer
+                /img/s4.png" alt="Advanced Programming Icon" class="icon-image">
               </div>
               <h5>ADVANCED COMPUTER PROGRAMMING</h5>
               <p>Complex coding, software development techniques, and advanced programming concepts.</p>
@@ -516,7 +520,8 @@ html, body {
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <div class="subject-card">
               <div class="subject-icon">
-                <img src="../frontend/img/s5.png" alt="Database Icon" class="icon-image">
+                <img src="../peer2peer
+                /img/s5.png" alt="Database Icon" class="icon-image">
               </div>
               <h5>DATABASE MANAGEMENT SYSTEM</h5>
               <p>Managing, organizing, and retrieving data using database software systems.</p>
@@ -525,7 +530,7 @@ html, body {
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <div class="subject-card">
               <div class="subject-icon">
-                <img src="../frontend/img/s6.png" alt="OOP Icon" class="icon-image">
+                <img src="../peer2peer/img/s6.png" alt="OOP Icon" class="icon-image">
               </div>
               <h5>OBJECT - ORIENTED PROGRAMMING</h5>
               <p>Programming that uses objects to create modular, reusable code.</p>
