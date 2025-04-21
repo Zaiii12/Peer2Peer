@@ -20,10 +20,10 @@
             <h1 class="title">I am a</h1>
             <div class="row justify-content-center g-3 buttonContainer">
                 <div class="col-12 col-sm-5 d-grid">
-                    <a href="signup_tutor.html" class="btn btn-danger tutorButton">Tutor</a>
+                    <a href="signup_tutor.php" class="btn btn-danger tutorButton">Tutor</a>
                 </div>
                 <div class="col-12 col-sm-5 d-grid">
-                    <a href="signUp_student.html" class="btn btn-danger studentButton">Student</a>
+                    <a href="signUp_student.php" class="btn btn-danger studentButton">Student</a>
             </div>
             <p class="loginLink">Already have an account? <a href="../Peer2Peer/login_page.php">Login</a></p>
          </div>

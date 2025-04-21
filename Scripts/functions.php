@@ -46,9 +46,7 @@ class processes {
         if ($stmt->error) {
             die("Error during execution: " . $stmt->error);
         }
-    
-        // Close the statement
-        $stmt->close();
+            $stmt->close();
     }
     
     
