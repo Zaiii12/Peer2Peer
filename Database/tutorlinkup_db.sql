@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2025 at 05:59 PM
+-- Generation Time: Apr 27, 2025 at 06:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -25,7 +25,7 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_student` (IN `user_id` INT, IN `sphoto` VARCHAR(255), IN `sr_code` VARCHAR(50), IN `first_name` VARCHAR(50), IN `last_name` VARCHAR(50), IN `gender` ENUM('Male','Female','Prefer not to say'), IN `username` VARCHAR(50), IN `email_address` VARCHAR(255), IN `pass` VARCHAR(50))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_student` (IN `user_id` INT, IN `sphoto` VARCHAR(255), IN `sr_code` VARCHAR(50), IN `first_name` VARCHAR(50), IN `last_name` VARCHAR(50), IN `gender` ENUM('Male','Female','Prefer not to say'), IN `username` VARCHAR(50), IN `email_address` VARCHAR(255), IN `pass` VARCHAR(255))   BEGIN
     INSERT INTO students (
         user_id,
         sphoto,
@@ -50,7 +50,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `create_student` (IN `user_id` INT, 
     );
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_tutor` (IN `user_id` INT, IN `first_name` VARCHAR(50), IN `last_name` VARCHAR(50), IN `gender` ENUM('Male','Female','Prefer not to say'), IN `username` VARCHAR(50), IN `email_address` VARCHAR(255), IN `pass` VARCHAR(50), IN `tphoto` VARCHAR(255), IN `photo_credentials` VARCHAR(255))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_tutor` (IN `user_id` INT, IN `first_name` VARCHAR(50), IN `last_name` VARCHAR(50), IN `gender` ENUM('Male','Female','Prefer not to say'), IN `username` VARCHAR(50), IN `email_address` VARCHAR(255), IN `pass` VARCHAR(255), IN `tphoto` VARCHAR(255), IN `photo_credentials` VARCHAR(255))   BEGIN
     INSERT INTO tutors (
         user_id,
         first_name,
@@ -75,7 +75,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `create_tutor` (IN `user_id` INT, IN
     );
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_user` (IN `username` VARCHAR(50), IN `pass` VARCHAR(50))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_user` (IN `username` VARCHAR(50), IN `pass` VARCHAR(255))   BEGIN
     INSERT INTO users (username, pass)
     VALUES (username, pass);
 END$$
@@ -110,20 +110,24 @@ CREATE TABLE `students` (
   `gender` enum('Male','Female','Prefer not to say') NOT NULL,
   `username` varchar(50) NOT NULL,
   `email_address` varchar(255) NOT NULL,
-  `pass` varchar(50) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `is_verified` varchar(50) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`student_id`, `user_id`, `sphoto`, `sr_code`, `first_name`, `last_name`, `gender`, `username`, `email_address`, `pass`, `is_verified`) VALUES
+(24, 68, 'uploads/Sphoto/test1_test.png', '23-39476', 'Jan Nole', 'Matres', 'Male', 'test1', 'test@gmail.com', '$2y$10$lisqiJObtpLHRIYOjk2ZY.EKFB5eWk2ARBl6xcocFZ/hPsLrCcAtm', 'Approved');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `student_subjects`
 --
-
-CREATE TABLE `student_subjects` (
-  `student_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Error reading structure for table tutorlinkup_db.student_subjects: #1932 - Table &#039;tutorlinkup_db.student_subjects&#039; doesn&#039;t exist in engine
+-- Error reading data for table tutorlinkup_db.student_subjects: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `tutorlinkup_db`.`student_subjects`&#039; at line 1
 
 -- --------------------------------------------------------
 
@@ -163,7 +167,7 @@ CREATE TABLE `tutors` (
   `gender` enum('Male','Female','Prefer not to say') NOT NULL,
   `username` varchar(50) NOT NULL,
   `email_address` varchar(255) NOT NULL,
-  `pass` varchar(50) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `is_verified` varchar(50) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -189,8 +193,15 @@ CREATE TABLE `tutor_verification` (
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `pass` varchar(100) NOT NULL
+  `pass` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `pass`) VALUES
+(68, 'test1', '$2y$10$lisqiJObtpLHRIYOjk2ZY.EKFB5eWk2ARBl6xcocFZ/hPsLrCcAtm');
 
 --
 -- Indexes for dumped tables
@@ -209,13 +220,6 @@ ALTER TABLE `admin`
 ALTER TABLE `students`
   ADD PRIMARY KEY (`student_id`),
   ADD UNIQUE KEY `user_id` (`user_id`);
-
---
--- Indexes for table `student_subjects`
---
-ALTER TABLE `student_subjects`
-  ADD PRIMARY KEY (`student_id`,`subject_id`),
-  ADD KEY `subject_id` (`subject_id`);
 
 --
 -- Indexes for table `student_tutors`
@@ -267,7 +271,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -279,7 +283,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `tutors`
 --
 ALTER TABLE `tutors`
-  MODIFY `tutor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `tutor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tutor_verification`
@@ -291,7 +295,7 @@ ALTER TABLE `tutor_verification`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- Constraints for dumped tables
@@ -302,13 +306,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `students`
   ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
---
--- Constraints for table `student_subjects`
---
-ALTER TABLE `student_subjects`
-  ADD CONSTRAINT `student_subjects_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`),
-  ADD CONSTRAINT `student_subjects_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`);
 
 --
 -- Constraints for table `student_tutors`
