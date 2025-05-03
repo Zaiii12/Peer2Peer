@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'peertopeer';
+$db = new Database();
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
