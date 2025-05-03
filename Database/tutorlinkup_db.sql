@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2025 at 06:23 AM
+-- Generation Time: May 03, 2025 at 04:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -119,7 +119,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `user_id`, `sphoto`, `sr_code`, `first_name`, `last_name`, `gender`, `username`, `email_address`, `pass`, `is_verified`) VALUES
-(24, 68, 'uploads/Sphoto/test1_test.png', '23-39476', 'Jan Nole', 'Matres', 'Male', 'test1', 'test@gmail.com', '$2y$10$lisqiJObtpLHRIYOjk2ZY.EKFB5eWk2ARBl6xcocFZ/hPsLrCcAtm', 'Approved');
+(26, 73, 'uploads/Sphoto/test_test.png', '23-39476', 'Jan Nole', 'Matres', 'Male', 'test', 'test@gmail.com', '$2y$10$ufrpw86/m2EByRbyDlRnDeIm7ZRBTri0v2KEOEn5Xt3vfbXRsG9m.', 'Approved'),
+(27, 74, 'uploads/Sphoto/test2_test.png', '23-39476', 'Jan Nole', 'Matres', 'Male', 'test2', 'test@gmail.com', '$2y$10$Qp8y9tZFKh0FdiKuHd2sGuiDPTQIAXbEtdDq1mvXBMkGs6ASx5QxW', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -171,6 +172,13 @@ CREATE TABLE `tutors` (
   `is_verified` varchar(50) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tutors`
+--
+
+INSERT INTO `tutors` (`tutor_id`, `user_id`, `tphoto`, `cphoto`, `first_name`, `last_name`, `gender`, `username`, `email_address`, `pass`, `is_verified`) VALUES
+(15, 75, 'test@gmail.com', '', 'uploads/Tphoto/test3_test.png', 'uploads/Cphoto/test3_test.png', '', 'Matres', 'Male', '$2y$10$4LtqJHVgIC1VQmnhZ1ocMOjg4Dtq.22jaP2HqoMKfkH4nESPyFFT2', 'Approved');
+
 -- --------------------------------------------------------
 
 --
@@ -201,7 +209,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `pass`) VALUES
-(68, 'test1', '$2y$10$lisqiJObtpLHRIYOjk2ZY.EKFB5eWk2ARBl6xcocFZ/hPsLrCcAtm');
+(73, 'test', '$2y$10$ufrpw86/m2EByRbyDlRnDeIm7ZRBTri0v2KEOEn5Xt3vfbXRsG9m.'),
+(74, 'test2', '$2y$10$Qp8y9tZFKh0FdiKuHd2sGuiDPTQIAXbEtdDq1mvXBMkGs6ASx5QxW'),
+(75, 'Matres', '$2y$10$4LtqJHVgIC1VQmnhZ1ocMOjg4Dtq.22jaP2HqoMKfkH4nESPyFFT2');
 
 --
 -- Indexes for dumped tables
@@ -271,7 +281,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -283,7 +293,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `tutors`
 --
 ALTER TABLE `tutors`
-  MODIFY `tutor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `tutor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tutor_verification`
@@ -295,7 +305,7 @@ ALTER TABLE `tutor_verification`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Constraints for dumped tables

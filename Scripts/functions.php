@@ -64,7 +64,6 @@ class processes {
         $stmt->bind_param("issssssss", $user_id, $sphoto, $sr_code, $first_name, $last_name, $gender, $username, $email_address, $hashed);
         $stmt->execute();
         $stmt->close();
-        echo $hashed;
     }
     
         private function check_username($username) {
