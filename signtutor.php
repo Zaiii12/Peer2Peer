@@ -16,9 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $tphoto = $process->upload_tphoto("tphoto", $username);
     $cphoto = $process->upload_cphoto("cphoto", $username);
 
-    $process->create_tutor($tphoto, $cphoto, $first_name, $last_name, $gender, $username, $email_address, $pass);
+    $process->create_tutor($first_name, $last_name, $gender, $username, $email_address, $pass, $tphoto, $cphoto);
 
     echo "Tutor successfully created.";
 }
 ?>
-
