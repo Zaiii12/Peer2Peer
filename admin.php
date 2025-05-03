@@ -1,6 +1,24 @@
 <?php
 session_start();
-require_once 'dbconnect.php';
+require_once 'Scripts/dbconnect.php';
+
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Count students
+$students = "SELECT COUNT(*) as student_count FROM students";
+$result_students = $conn->query($students);
+$studentCount = ($result_students && $row = $result_students->fetch_assoc()) ? $row['student_count'] : 0;
+
+// Count tutors
+$student_tutors = "SELECT COUNT(*) as tutor_count FROM student_tutors";
+$result_tutors = $conn->query($student_tutors);
+$tutorCount = ($result_tutors && $row = $result_tutors->fetch_assoc()) ? $row['tutor_count'] : 0;
+
+$conn->close();
 
 if (isset($_POST['action']) && $_POST['action'] === 'login') {
     $username = $_POST['username'];
