@@ -155,15 +155,6 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
 }
 ?>
 
-<?php if (!isset($_SESSION['admin_id'])): ?>
-    <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
-    <form method="POST">
-        <input name="username" placeholder="Username" required><br>
-        <input name="password" type="password" placeholder="Password" required><br>
-        <button type="submit" name="action" value="login">Login</button>
-    </form>
-<?php else: ?>
-
     <?php
         $userCount = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
         echo "<p>Total users signed up: $userCount</p>";
