@@ -156,7 +156,6 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
 ?>
 
 <?php if (!isset($_SESSION['admin_id'])): ?>
-    <h2>Admin Login</h2>
     <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
     <form method="POST">
         <input name="username" placeholder="Username" required><br>
@@ -164,7 +163,6 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
         <button type="submit" name="action" value="login">Login</button>
     </form>
 <?php else: ?>
-    <a href="admin.php?action=logout">Logout</a>
 
     <?php
         $userCount = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
