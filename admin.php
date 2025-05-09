@@ -97,9 +97,7 @@
     </div>
   </div>
 
-</body>
-</html>
-<?php
+  <?php
 session_start();
 require_once 'Scripts/dbconnect.php';
 
@@ -157,13 +155,6 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
 }
 ?>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Page</title>
-</head>
-<body>
 <?php if (!isset($_SESSION['admin_id'])): ?>
     <h2>Admin Login</h2>
     <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
@@ -173,16 +164,12 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
         <button type="submit" name="action" value="login">Login</button>
     </form>
 <?php else: ?>
-    <h2>Admin Dashboard</h2>
     <a href="admin.php?action=logout">Logout</a>
 
-    <h3>Statistics</h3>
     <?php
         $userCount = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
         echo "<p>Total users signed up: $userCount</p>";
     ?>
-
-    <h3>Pending Tutor Signups</h3>
     <?php
         $tutors = $pdo->query("SELECT * FROM tutors WHERE status = 'pending'")->fetchAll();
         if (count($tutors) === 0) echo "<p>No pending tutors.</p>";
