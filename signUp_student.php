@@ -82,7 +82,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-danger signUpButton">SIGN UP</button>
-                <p class="loginLink">Already have an account? <a href="../Peer2peer/login_page.html">Login</a></p>
+                <p class="loginLink">Already have an account? <a href="../Peer2peer/login_page.php">Login</a></p>
             </form>
         </div>
     </div>

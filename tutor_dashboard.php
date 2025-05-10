@@ -44,18 +44,19 @@
 </head>
 <body>
 <?php
-    include 'navbar_4.php'; 
+    include 'navbar_2.php'; 
 ?>
   <div class="container mt-5">
     <div class="row mb-5 welcome">
       <h2>Welcome to TutorLinkUp!</h2>
-      <p>We’re glad to have you here! TutorLinkUp is your academic companion, connecting Information Technology students with dedicated volunteer tutors. Whether you need help understanding a tough topic or want to strengthen your knowledge in a major IT subject, we’re here to support your learning journey.
+      <p>We’re glad to have you here! TutorLinkUp is your academic companion, connecting Information Technology students with dedicated volunteer tutors. Whether you need help understanding a tough topic or want to strengthen your knowledge in a major IT subject, 
+        we’re here to support your learning journey. To publicly appear as a verified tutor. Please add your information below.
       <br>
       <br>Let’s grow, learn, and succeed—together.</p>
     </div>
 
-    <button class="btn btn-danger custom-btn px-4 py-2 d-block mx-auto" onclick="window.location.href='view_tutor.php'">
-  My Tutor Information
+    <button class="btn btn-danger custom-btn px-4 py-2 d-block mx-auto" onclick="window.location.href='tutor_profile.php'">
+Add your information.
 </button>
 
 

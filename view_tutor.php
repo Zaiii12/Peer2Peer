@@ -94,11 +94,12 @@
     </div>
 
     <!-- My Credentials -->
-    <div class="credentials">
-      <h5><strong>My Credentials</strong></h5>
-      <p>Click the PDF Button.</p>
-    <p class="button">PDF</p>
-    </div>
+  <div class="credentials">
+    <h5><strong>My Credentials</strong></h5>
+    <p>Click the PDF Button.</>
+    <a href="" class="button" target="_blank">PDF</a>
+  </div>
+
 
   </div>
 

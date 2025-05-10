@@ -439,7 +439,6 @@ html, body {
     
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#HomepageT.php">HOME</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">ABOUT US</a></li>
         <li class="nav-item"><a class="nav-link" href="#subjects">SUBJECTS</a></li>
         <li class="nav-item"><a class="nav-link" href="developers.php">DEVELOPERS</a></li>
@@ -452,7 +451,8 @@ html, body {
 
     <!-- Home Section -->
     <section class="home-section d-flex align-items-center justify-content-center text-center" id="home">
-  <img src="../peer2peer/img/Home.png" alt="Online Education Banner" class="home-image">
+  <img src="../peer2peer/img/bsu-lipa.jpg
+  " alt="Online Education Banner" class="home-image">
   <div class="home-overlay"></div>
   <div class="home-text-container container">
     <div class="row justify-content-center">
@@ -547,24 +547,26 @@ html, body {
       </div>
     </section>
 
-<!-- Feedback Section -->
+    <section id="vmv" class="text-center py-5">
+  <div class="container">
+    <h2 class="section-title">VISION</h2>
+    <p class="mb-4 poppins-regular">
+      A leading digital platform that empowers students by connecting them with trusted, subject-specific tutors who foster academic growth and personal success.
+    </p>
 
+    <h2 class="section-title">MISSION</h2>
+    <p class="mb-4 poppins-regular">
+      TutorLinkUp is dedicated to helping students thrive by providing a user-friendly, secure, and accessible space to connect with expert tutors across a wide range of subjects.
+      We aim to personalize learning, bridge educational gaps, and cultivate a supportive environment that inspires confidence and achievement in every learner.
+    </p>
 
-<section id="feedback" class="bg-secondary bg-opacity-10 py-5">
-  <div class="container text-center">
-    <h2 class="section-title mb-4">FEEDBACK</h2>
-    <div class="feedback-carousel position-relative mx-auto" style="max-width: 1000px;">
-      <div class="feedback-box px-3">
-      <p class="testimonial-text">
-          "I'm truly impressed with this platform! The tutor matching system is incredibly smart and made it so easy to find the right tutor for my needs. I love how organized and intuitive everything is—from the search process to scheduling sessions. The platform clearly values students' learning experiences, and it shows. Thanks to this system, I found the help I needed quickly and felt supported every step of the way. I'm genuinely grateful for how much it has improved my studies. Highly recommended to anyone seeking reliable academic support!"
-        </p>
-        <p class="feedback-author">— Jimae A.</p>
-      </div>
-      <div class="navigation-arrows">
-        <button class="arrow-left"><i class="bi bi-arrow-left"></i></button>
-        <button class="arrow-right"><i class="bi bi-arrow-right"></i></button>
-      </div>
-    </div>
+    <h2 class="section-title">CORE VALUES</h2>
+    <p class="mb-1 poppins-regular"><strong>Empowerment</strong></p>
+    <p class="mb-1 poppins-regular"><strong>Commitment</strong></p>
+    <p class="mb-1 poppins-regular"><strong>Trust</strong></p>
+    <p class="mb-1 poppins-regular"><strong>Accessibility</strong></p>
+    <p class="mb-1 poppins-regular"><strong>Excellence</strong></p>
+    <p class="mb-4 poppins-regular"><strong>Collaboration</strong></p>
   </div>
 </section>
 
@@ -577,9 +579,8 @@ html, body {
       <div class="footer-subtitle">Link Up, Level Up</div>
     </div>
     <div class="col-md-3 mb-4">
-      <a href="#" class="footer-link d-block">Home</a>
-      <a href="#" class="footer-link d-block">About</a>
-      <a href="#" class="footer-link d-block">Developers</a>
+      <a href="about_us.php" class="footer-link d-block">About</a>
+      <a href="developers.php" class="footer-link d-block">Developers</a>
     </div>
     <div class="col-md-3 mb-4">
       <h6>Social Media</h6>

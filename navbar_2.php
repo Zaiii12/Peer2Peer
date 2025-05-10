@@ -1,3 +1,20 @@
+<?php
+require_once 'Scripts/functions.php';
+$process = new processes($conn);
+$user_id = $_SESSION['user_id'] ?? null;
+$profile_image = 'uploads\PLACEHOLDER\Placeholder.png'; // default fallback
+$username = 'Guest';
+
+if ($user_id) {
+    $user_data = $process->get_user_by_id($conn, $user_id);
+    if (!empty($user_data['image'])) {
+        $profile_image = htmlspecialchars($user_data['image']);
+    }
+    if (!empty($user_data['username'])) {
+        $username = htmlspecialchars($user_data['username']);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,72 +68,75 @@
 </head>
 <body>
 
-  <!-- Custom Navbar -->
-  <div class="navbar-custom d-flex justify-content-between align-items-center">
-    <div class="dropdown">
-      <a class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
-        <span class="fw-medium">sample06</span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</a></li>
-        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a></li>
-      </ul>
-    </div>
-    <button class="logout-btn" onclick="window.location.href='logout.php'">LOGOUT</button>
+<!-- Custom Navbar -->
+<div class="navbar-custom d-flex justify-content-between align-items-center">
+  <div class="dropdown">
+    <a class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="<?= $profile_image ?>" alt="Profile" class="profile-pic">
+      <span class="fw-medium"><?= $username ?></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="tutor_profile.php" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</a></li>
+    </ul>
   </div>
+  <button class="logout-btn" onclick="window.location.href='logout.php'">LOGOUT</button>
+</div>
 
-  <!-- Edit Profile Modal -->
+<!-- Edit Profile Modal -->
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Update Username</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-                <label for="usernameInput" class="form-label">Username:</label>
-                <input type="text" class="form-control mb-3" id="usernameInput" placeholder="Enter new username">
-              </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="editProfileModalLabel">Update Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-  </div>
-  
-  
 
-  <!-- Change Password Modal -->
-  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Update Username</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">First Name:</label>
+              <input type="text" class="form-control" id="firstName">
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Last Name:</label>
+              <input type="text" class="form-control" id="lastName">
+            </div>
+            <div class="col-md-6">
+              <label for="gender" class="form-label">Gender:</label>
+              <select class="form-select" id="gender">
+                <option selected disabled>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="srCode" class="form-label">Sr-Code:</label>
+              <input type="text" class="form-control" id="srCode">
+            </div>
+            <div class="col-md-6">
+              <label for="username" class="form-label">Username:</label>
+              <input type="text" class="form-control" id="username">
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Address:</label>
+              <input type="email" class="form-control" id="email">
+            </div>
           </div>
-          <div class="modal-body">
-            <form>
-                <label for="currentPasswordInput" class="form-label">Current Password:</label>
-                <input type="password" class="form-control mb-3" id="currentPasswordInput" placeholder="Enter your current password">
-
-                <label for="newPasswordInput" class="form-label">New Password:</label>
-                <input type="password" class="form-control mb-3" id="newPasswordInput" placeholder="Enter your new password">
-
-                <label for="confirmPasswordInput" class="form-label">Confirm Password:</label>
-                <input type="password" class="form-control mb-3" id="confirmPasswordInput" placeholder="Confirm your new password">
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </div>
+        </form>
       </div>
-  </div>
 
-  <!-- Bootstrap Bundle JS (includes dropdown & modal) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <div class="modal-footer justify-content-end">
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Bundle JS (includes dropdown & modal) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
