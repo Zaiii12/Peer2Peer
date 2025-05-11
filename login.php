@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $pass = $_POST["pass"];
 
     $process = new Processes($conn);
-    $status = $process->login($username, $pass); // returns: tutor_success, student_success, pending, invalid_password, not_found
+    $status = $process->login($username, $pass); // returns: tutor_success, student_success, admin_success, pending, invalid_password, not_found
 }
 ?>
 
@@ -53,6 +53,18 @@ Swal.fire({
 });
 </script>
 
+<?php elseif ($status === 'admin_success'): ?>
+<script>
+Swal.fire({
+  title: 'Success!',
+  text: 'Admin login successful!',
+  icon: 'success',
+  confirmButtonText: 'OK'
+}).then(() => {
+  window.location.href = 'admin_dashboard.php';
+});
+</script>
+
 <?php elseif ($status === 'pending'): ?>
 <script>
 Swal.fire({
@@ -60,7 +72,7 @@ Swal.fire({
   text: 'Your account is not approved yet.',
   icon: 'info',
   confirmButtonText: 'OK'
-  }).then(() => {
+}).then(() => {
   window.location.href = 'login_page.php';
 });
 </script>
@@ -72,7 +84,7 @@ Swal.fire({
   text: 'Invalid password.',
   icon: 'error',
   confirmButtonText: 'OK'
-    }).then(() => {
+}).then(() => {
   window.location.href = 'login_page.php';
 });
 </script>
@@ -84,7 +96,7 @@ Swal.fire({
   text: 'Username not found.',
   icon: 'error',
   confirmButtonText: 'OK'
-    }).then(() => {
+}).then(() => {
   window.location.href = 'login_page.php';
 });
 </script>
@@ -92,6 +104,7 @@ Swal.fire({
 
 </body>
 </html>
+
 
 
 

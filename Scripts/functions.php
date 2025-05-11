@@ -155,20 +155,53 @@ class processes {
             return password_hash($pass, PASSWORD_DEFAULT);
         }
 
-public function login($username, $pass) {
+    public function login($username, $pass) {
+        
+    $adminStmt = $this->conn->prepare("SELECT admin_id, pass FROM admin WHERE username = ?");
+        if (!$adminStmt) {
+        die("Error preparing admin SQL: " . $this->conn->error);
+        }
+
+        $adminStmt->bind_param("s", $username);
+        $adminStmt->execute();
+            $adminStmt->store_result();
+
+        if ($adminStmt->num_rows > 0) {
+         $admin_id = null;
+        $admin_pass = '';
+
+        $adminStmt->bind_result($admin_id, $admin_pass);
+        $adminStmt->fetch();
+
+        if ($pass === $admin_pass) { 
+            $_SESSION['admin_id'] = $admin_id;
+            $_SESSION['role'] = 'admin';
+            $adminStmt->close();
+            return 'admin_success';
+        } else {
+            $adminStmt->close();
+            return 'invalid_password';
+        }
+    }
+        $adminStmt->close();
+
+
+    // If not admin, check users table (tutor or student)
     $stmt = $this->conn->prepare("
-        SELECT u.user_id, u.pass, t.tutor_id, t.is_verified AS tutor_verified, s.is_verified AS student_verified
+        SELECT u.user_id, u.pass,
+               t.tutor_id, t.is_verified AS tutor_verified,
+               s.is_verified AS student_verified
         FROM users u
         LEFT JOIN tutors t ON u.user_id = t.user_id
         LEFT JOIN students s ON u.user_id = s.user_id
         WHERE u.username = ?
     ");
 
-    if ($stmt === false) {
-        die("Error preparing SQL statement: " . $this->conn->error);
+    if (!$stmt) {
+        die("Error preparing user SQL: " . $this->conn->error);
     }
 
-    $stmt->bind_param("s", $username);  
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
@@ -183,24 +216,33 @@ public function login($username, $pass) {
         $stmt->fetch();
 
         if (password_verify($pass, $hashed)) {
+            $_SESSION['user_id'] = $user_id;
+
             if ($tutor_id !== null && $tutor_verified === 'Approved') {
-                $_SESSION['user_id'] = $user_id;
                 $_SESSION['role'] = 'tutor';
+                $stmt->close();
                 return 'tutor_success';
-            } elseif ($tutor_id === null && $student_verified === 'Approved') {
-                $_SESSION['user_id'] = $user_id;
-                $_SESSION['role'] = 'student';
-                return 'student_success';
-            } else {
-                return 'pending';
             }
+
+            if ($tutor_id === null && $student_verified === 'Approved') {
+                $_SESSION['role'] = 'student';
+                $stmt->close();
+                return 'student_success';
+            }
+
+            $stmt->close();
+            return 'pending';
         } else {
+            $stmt->close();
             return 'invalid_password';
         }
-    } else {
-        return 'not_found';
     }
+
+    $stmt->close();
+    return 'not_found';
 }
+
+
 
         
         
@@ -208,15 +250,16 @@ public function login($username, $pass) {
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
-        
-            if (!isset($_SESSION['user_id'])) {
+
+            if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
                 header("Location: login_page.php");
                 exit;
-                
             }
 
-            return $_SESSION['user_id'];
+            // Return whichever is set
+            return $_SESSION['admin_id'] ?? $_SESSION['user_id'];
         }
+
 
         public function get_user_id_from_session() {
             return $_SESSION['user_id'] ?? 0; 
