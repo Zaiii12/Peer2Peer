@@ -45,17 +45,31 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     header("Location: admin.php");
     exit;
 }
-
+//For status of students
 if (isset($_GET['approve']) && isset($_SESSION['admin_id'])) {
     $id = $_GET['approve'];
-    $pdo->prepare("UPDATE tutors SET status = 'approved' WHERE id = ?")->execute([$id]);
+    $pdo->prepare("UPDATE students SET is_verified = 'approved' WHERE id = ?")->execute([$id]);
     header("Location: admin.php");
     exit;
 }
 
 if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
     $id = $_GET['deny'];
-    $pdo->prepare("UPDATE tutors SET status = 'denied' WHERE id = ?")->execute([$id]);
+    $pdo->prepare("UPDATE students SET is_verified = 'denied' WHERE id = ?")->execute([$id]);
+    header("Location: admin.php");
+    exit;
+}
+//For status of tutors
+if (isset($_GET['approve']) && isset($_SESSION['admin_id'])) {
+    $id = $_GET['approve'];
+    $pdo->prepare("UPDATE tutors SET is_verified = 'approved' WHERE id = ?")->execute([$id]);
+    header("Location: admin.php");
+    exit;
+}
+
+if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
+    $id = $_GET['deny'];
+    $pdo->prepare("UPDATE tutors SET is_verified = 'denied' WHERE id = ?")->execute([$id]);
     header("Location: admin.php");
     exit;
 }
