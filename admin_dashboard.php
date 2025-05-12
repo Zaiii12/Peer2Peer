@@ -1,8 +1,8 @@
 <?php
 session_start();
-  include 'Scripts/functions.php';
-  $process = new processes($conn);
-  $process->checklogin();
+include 'Scripts/functions.php';
+$process = new processes($conn);
+$process->checklogin();
 
 // Count students
 $students = "SELECT COUNT(*) as student_count FROM students";
@@ -74,7 +74,6 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,6 +114,28 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
       align-items: center;
       justify-content: center;
       font-weight: 500;
+    }
+
+    .card {
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card p {
+      font-size: 14px;
+    }
+
+    .card h4 {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .card ul {
+      font-size: 14px;
+    }
+
+    .btn-outline-primary, .btn-outline-success, .btn-outline-dark, .btn-outline-info {
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -159,6 +180,28 @@ if (isset($_GET['deny']) && isset($_SESSION['admin_id'])) {
       </div>
     </div>
 
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card p-4">
+          <h4 class="mb-3">Welcome, Admin!</h4>
+          <p>Use this dashboard to monitor tutor and student activity, manage pending accounts, and maintain the system efficiently.</p>
+          <ul>
+            <li>Approve/Deny tutor and student registrations</li>
+            <li>View all registered users</li>
+            <li>Update subjects or platform info</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4">
+          <h4 class="mb-3">Quick Actions</h4>
+          <div class="d-grid gap-2">
+            <a href="request_student.php" class="btn btn-outline-primary">Manage Student Requests</a>
+            <a href="request_tutor.php" class="btn btn-outline-success">Manage Tutor Requests</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   
 </body>

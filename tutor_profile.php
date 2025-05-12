@@ -1,14 +1,13 @@
 <?php
 require_once 'Scripts/functions.php';
 
-
 $process = new processes($conn);
 $process->checklogin();
 
+// Get the user ID from the session (assuming checkLogin() manages session)
+$user_id = $_SESSION['user_id'] ?? 0;
 
-// $user_id = $_SESSION['user_id'] ?? 0;
-// echo $user_id;   // FOR DEBUGGING DO NOT TOUCH 
-
+// Get tutor_id associated with the user_id
 $query = "SELECT tutor_id FROM tutors WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
@@ -17,6 +16,7 @@ $stmt->bind_result($tutor_id);
 $stmt->fetch();
 $stmt->close();
 
+// Get tutor profile information from the database
 $query = "SELECT * FROM tutor_profiles WHERE tutor_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $tutor_id);
@@ -24,6 +24,21 @@ $stmt->execute();
 $result = $stmt->get_result();
 $profile = $result->fetch_assoc();
 $stmt->close();
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Process form data
+    $name = $_POST["name"];
+    $subject = $_POST["subject"];
+    $language = $_POST["language"];
+    $description = $_POST["description"];
+    $image = $_FILES["image"];
+
+    // Call the method to update the tutor profile
+    $process->update_tutor_profile($tutor_id, $name, $subject, $language, $description, $image);
+
+    // Success message
+    echo "Profile updated successfully!";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,3 +96,4 @@ $stmt->close();
 </div>
 </body>
 </html>
+
